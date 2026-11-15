@@ -334,7 +334,16 @@ export default function App() {
   return (
   
     <div className="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
-        <div id="container-08b6c88fb7f7be6beb98a7b331c85732"></div>
+        <div
+  style={{
+    width: "100%",
+    maxWidth: "300px",
+    margin: "20px auto",
+    overflow: "hidden"
+  }}
+>
+  <div id="container-08b6c88fb7f7be6beb98a7b331c85732"></div>
+</div>
       {/* Navbar */}
       <Navbar
         lang={lang}
