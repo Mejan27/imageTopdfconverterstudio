@@ -334,15 +334,20 @@ export default function App() {
   return (
   
     <div className="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
-        <div
-  style={{
-    width: "100%",
-    maxWidth: "300px",
-    margin: "20px auto",
-    overflow: "hidden"
-  }}
->
-  <div id="container-08b6c88fb7f7be6beb98a7b331c85732"></div>
+{/* Advertisement Section */}
+<div className="w-full max-w-[746px] mx-auto my-4 px-2">
+  <div className="bg-slate-900 border border-slate-800 rounded-xl p-2">
+    <p className="text-center text-[9px] text-slate-400 mb-2 tracking-wider">
+      ADVERTISEMENT
+    </p>
+
+    <div
+      id="adsterra-banner"
+      className="w-full min-h-[90px] flex items-center justify-center bg-white overflow-hidden"
+    >
+      {/* Adsterra Banner Code Goes Here */}
+    </div>
+  </div>
 </div>
       {/* Navbar */}
       <Navbar
