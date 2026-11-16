@@ -345,7 +345,7 @@ export default function App() {
       id="adsterra-banner"
       className="w-full min-h-[90px] flex items-center justify-center bg-white overflow-hidden"
     >
-      {/* Adsterra Banner Code Goes Here */}
+      <div id="container-08b6c88fb7f7be6beb98a7b331c85732"></div>
     </div>
   </div>
 </div>
