@@ -350,6 +350,7 @@ export default function App() {
   
     <div className="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
 
+
 {/* Advertisement Section */}
 <div className="w-full max-w-[746px] mx-auto my-4 px-2">
   <div className="bg-slate-900 border border-slate-800 rounded-xl p-2">
@@ -359,12 +360,13 @@ export default function App() {
 
     <div
       id="adsterra-banner"
-      className="w-full min-h-[90px] flex items-center justify-center bg-white overflow-hidden"
+      className="w-full min-h-[90px] bg-white flex items-center justify-center overflow-hidden"
     >
       <div id="container-08b6c88fb7f7be6beb98a7b331c85732"></div>
     </div>
   </div>
 </div>
+
       {/* Navbar */}
       <Navbar
         lang={lang}
