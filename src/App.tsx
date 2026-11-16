@@ -11,7 +11,7 @@ import { ToastContainer, ToastItem } from './components/Toast';
 import { ImageItem, PDFSettings, Language } from './types';
 import { generatePdf, loadImage } from './utils/pdfGenerator';
 import { createSampleImages } from './utils/sampleImages';
-
+import { useEffect } from "react";
 export default function App() {
   const [images, setImages] = useState<ImageItem[]>([]);
   const [lang, setLang] = useState<Language>(() => {
@@ -221,6 +221,21 @@ export default function App() {
           ctx.drawImage(img, -img.naturalWidth / 2, -img.naturalHeight / 2);
 
           const rotatedUrl = canvas.toDataURL('image/jpeg', 0.92);
+          useEffect(() => {
+  const container = document.getElementById("adsterra-banner");
+
+  if (!container || container.dataset.loaded) return;
+
+  container.dataset.loaded = "true";
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.setAttribute("data-cfasync", "false");
+  script.src =
+    "https://bauval.org/21/08b6c88fb7f7be6beb98a7b331c85732";
+
+  container.appendChild(script);
+}, []);
 
           return {
             ...item,
@@ -334,6 +349,7 @@ export default function App() {
   return (
   
     <div className="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+
 {/* Advertisement Section */}
 <div className="w-full max-w-[746px] mx-auto my-4 px-2">
   <div className="bg-slate-900 border border-slate-800 rounded-xl p-2">
