@@ -11,7 +11,6 @@ import { ToastContainer, ToastItem } from './components/Toast';
 import { ImageItem, PDFSettings, Language } from './types';
 import { generatePdf, loadImage } from './utils/pdfGenerator';
 import { createSampleImages } from './utils/sampleImages';
-import { useEffect } from "react";
 export default function App() {
   const [images, setImages] = useState<ImageItem[]>([]);
   const [lang, setLang] = useState<Language>(() => {
@@ -44,6 +43,22 @@ export default function App() {
     pages: number;
     size: number;
   } | null>(null);
+
+  // Load the single Native Banner ad after its footer container is mounted.
+  useEffect(() => {
+    const container = document.getElementById('adsterra-banner');
+
+    if (!container || container.dataset.loaded === 'true') return;
+
+    container.dataset.loaded = 'true';
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.setAttribute('data-cfasync', 'false');
+    script.src = 'https://bauval.org/21/08b6c88fb7f7be6beb98a7b331c85732';
+
+    container.appendChild(script);
+  }, []);
 
   // Sync theme to <html> tag
   useEffect(() => {
@@ -221,22 +236,6 @@ export default function App() {
           ctx.drawImage(img, -img.naturalWidth / 2, -img.naturalHeight / 2);
 
           const rotatedUrl = canvas.toDataURL('image/jpeg', 0.92);
-          useEffect(() => {
-  const container = document.getElementById("adsterra-banner");
-
-  if (!container || container.dataset.loaded) return;
-
-  container.dataset.loaded = "true";
-
-  const script = document.createElement("script");
-  script.async = true;
-  script.setAttribute("data-cfasync", "false");
-  script.src =
-    "https://bauval.org/21/08b6c88fb7f7be6beb98a7b331c85732";
-
-  container.appendChild(script);
-}, []);
-
           return {
             ...item,
             currentSrc: rotatedUrl,
@@ -351,22 +350,6 @@ export default function App() {
     <div className="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
 
 
-{/* Advertisement Section */}
-<div className="w-full max-w-[746px] mx-auto my-4 px-2">
-  <div className="bg-slate-900 border border-slate-800 rounded-xl p-2">
-    <p className="text-center text-[9px] text-slate-400 mb-2 tracking-wider">
-      ADVERTISEMENT
-    </p>
-
-    <div
-      id="adsterra-banner"
-      className="w-full min-h-[90px] bg-white flex items-center justify-center overflow-hidden"
-    >
-      <div id="container-08b6c88fb7f7be6beb98a7b331c85732"></div>
-    </div>
-  </div>
-</div>
-
       {/* Navbar */}
       <Navbar
         lang={lang}
@@ -437,6 +420,21 @@ export default function App() {
             </button>
             <span aria-hidden="true">·</span>
             <span>PDF 1.4+ Standard</span>
+          </div>
+        </div>
+
+        {/* Advertisement section at the bottom of the footer */}
+        <div className="w-full max-w-[746px] mx-auto mt-8 px-2">
+          <div className="rounded-xl border border-slate-700 bg-slate-900/80 p-3">
+            <p className="mb-2 text-center text-[9px] font-medium tracking-widest text-slate-400">
+              ADVERTISEMENT
+            </p>
+            <div
+              id="adsterra-banner"
+              className="flex min-h-[90px] w-full items-center justify-center overflow-hidden rounded-md bg-white"
+            >
+              <div id="container-08b6c88fb7f7be6beb98a7b331c85732" />
+            </div>
           </div>
         </div>
       </footer>
